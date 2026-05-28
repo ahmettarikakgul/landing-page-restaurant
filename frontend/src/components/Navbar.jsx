@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -66,57 +67,95 @@ export const Navbar = () => {
               <Button variant="ghost" className="text-stone-700 hover:text-stone-900 hover:bg-stone-100 font-bold text-sm" data-testid="nav-login-btn">
                 Giriş
               </Button>
-              <Button className="bg-[#1f1612] hover:bg-[#2a1d15] text-amber-50 font-black text-sm shadow-sm px-5 h-10" data-testid="nav-cta-btn">
+              <Button className="bg-[#1c1917] hover:bg-[#26221e] text-amber-50 font-black text-sm shadow-sm px-5 h-10" data-testid="nav-cta-btn">
                 Ücretsiz Dene <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2.5 -mr-2 rounded-xl text-stone-900 hover:bg-stone-100 active:bg-stone-200 transition-all"
+              className="lg:hidden relative w-11 h-11 -mr-2 rounded-xl flex items-center justify-center text-stone-900 hover:bg-stone-100 active:bg-stone-200 active:scale-95 transition-all"
               data-testid="mobile-menu-toggle"
               aria-label="Menüyü aç/kapat"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" strokeWidth={2.5} /> : <Menu className="w-6 h-6" strokeWidth={2.5} />}
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0, opacity: isMobileMenuOpen ? 0 : 1 }}
+                transition={{ duration: 0.2 }}
+                className="absolute"
+              >
+                <Menu className="w-6 h-6" strokeWidth={2.5} />
+              </motion.div>
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 0 : -90, opacity: isMobileMenuOpen ? 1 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute"
+              >
+                <X className="w-6 h-6" strokeWidth={2.5} />
+              </motion.div>
             </button>
           </div>
         </div>
-
-        {/* Mobile Drawer */}
-        <div
-          className={`lg:hidden fixed inset-x-0 top-16 bottom-0 bg-white transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
-          data-testid="mobile-menu-drawer"
-        >
-          <div className="h-full overflow-y-auto px-5 py-6 flex flex-col">
-            <div className="flex-1 space-y-1">
-              {navLinks.map((link, idx) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between text-stone-900 hover:text-amber-700 font-black text-2xl py-4 border-b border-stone-100 transition-colors"
-                  style={{ transitionDelay: `${idx * 30}ms` }}
-                >
-                  <span>{link.label}</span>
-                  <ArrowRight className="w-5 h-5 text-stone-400" />
-                </a>
-              ))}
-            </div>
-
-            <div className="pt-6 space-y-3">
-              <Button variant="outline" className="w-full h-14 border-2 border-stone-200 font-black text-base">
-                Giriş Yap
-              </Button>
-              <Button className="w-full h-14 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-black text-base shadow-lg shadow-red-600/30">
-                Ücretsiz Hesap Aç
-              </Button>
-              <p className="text-center text-xs text-stone-500 font-semibold pt-2">14 gün ücretsiz · Kredi kartı gerekmez</p>
-            </div>
-          </div>
-        </div>
       </nav>
+
+      {/* Mobile Drawer - properly animated full-screen sheet */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="lg:hidden fixed inset-0 z-40 bg-stone-900/40 backdrop-blur-sm"
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 32 }}
+              className="lg:hidden fixed inset-x-0 top-0 z-40 bg-white shadow-2xl"
+              data-testid="mobile-menu-drawer"
+            >
+              <div className="pt-20 pb-6 px-5 max-h-[88vh] overflow-y-auto">
+                <div className="space-y-1 mb-6">
+                  {navLinks.map((link, idx) => (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + idx * 0.05, duration: 0.3 }}
+                      className="flex items-center justify-between text-stone-900 font-black text-2xl py-4 border-b border-stone-100 active:bg-stone-50 active:scale-[0.99] -mx-2 px-2 rounded-lg transition-transform"
+                    >
+                      <span>{link.label}</span>
+                      <ArrowRight className="w-5 h-5 text-stone-400" />
+                    </motion.a>
+                  ))}
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                  className="space-y-3"
+                >
+                  <Button variant="outline" className="w-full h-14 border-2 border-stone-200 font-black text-base">
+                    Giriş Yap
+                  </Button>
+                  <Button className="w-full h-14 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-black text-base shadow-lg shadow-red-600/30">
+                    Ücretsiz Hesap Aç
+                  </Button>
+                  <p className="text-center text-xs text-stone-500 font-semibold pt-2">14 gün ücretsiz · Kredi kartı gerekmez</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

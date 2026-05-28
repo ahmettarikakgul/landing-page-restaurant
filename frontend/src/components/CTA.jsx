@@ -16,7 +16,7 @@ export const CTA = () => {
         >
           {/* Warm espresso background */}
           <div className="absolute inset-0" style={{
-            background: 'linear-gradient(135deg, #1f1612 0%, #2a1d15 40%, #3a2618 100%)'
+            background: 'linear-gradient(135deg, #1c1917 0%, #26221e 40%, #3c352f 100%)'
           }} />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px]" />
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-amber-500/25 via-transparent to-transparent blur-3xl" />
@@ -69,7 +69,7 @@ export const CTA = () => {
                 >
                   <Button
                     size="lg"
-                    className="group h-14 px-7 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-[#1f1612] text-[15px] font-black shadow-xl shadow-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 rounded-xl"
+                    className="group h-14 px-7 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-[#1c1917] text-[15px] font-black shadow-xl shadow-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 rounded-xl"
                     data-testid="cta-primary"
                   >
                     <span className="flex items-center gap-2">
@@ -148,7 +148,7 @@ export const CTA = () => {
                     className="absolute -top-3 -right-3 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl px-4 py-2.5 shadow-xl"
                   >
                     <div className="text-[9px] font-black text-amber-900 uppercase tracking-wider">Aktif</div>
-                    <div className="text-xl font-black text-[#1f1612] leading-none">1.200+</div>
+                    <div className="text-xl font-black text-[#1c1917] leading-none">1.200+</div>
                   </motion.div>
                 </motion.div>
               </div>

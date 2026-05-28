@@ -92,7 +92,7 @@ export const Modules = () => {
                 {activeTab === cat.id && (
                   <motion.div
                     layoutId="tab-pill"
-                    className="absolute inset-0 bg-[#1f1612] rounded-xl shadow-lg"
+                    className="absolute inset-0 bg-[#1c1917] rounded-xl shadow-lg"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -170,7 +170,7 @@ export const Modules = () => {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative rounded-3xl overflow-hidden p-8 lg:p-12"
-          style={{ background: 'linear-gradient(135deg, #2a1d15 0%, #3a2618 50%, #2a1d15 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #26221e 0%, #3c352f 50%, #26221e 100%)' }}
         >
           <div className="absolute inset-0 opacity-30" style={{
             backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.18), transparent 50%), radial-gradient(circle at 80% 50%, rgba(234, 88, 12, 0.12), transparent 50%)'

@@ -37,7 +37,7 @@ const testimonials = [
     role: 'Operasyon Direktörü',
     brand: 'Fırın+',
     rating: 5,
-    color: 'from-[#3a2a1f] to-[#2a1d15]',
+    color: 'from-[#3a2a1f] to-[#26221e]',
   },
 ];
 
@@ -170,7 +170,7 @@ export const Testimonials = () => {
               key={i}
               animate={{
                 width: i === activeIndex ? 24 : 6,
-                backgroundColor: i === activeIndex ? '#1f1612' : '#d6d3d1',
+                backgroundColor: i === activeIndex ? '#1c1917' : '#d6d3d1',
               }}
               transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               className="h-1.5 rounded-full"

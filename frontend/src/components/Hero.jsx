@@ -27,7 +27,7 @@ export const Hero = () => {
               data-testid="hero-trust-pill"
             >
               <div className="flex -space-x-2">
-                {['bg-amber-500', 'bg-orange-500', 'bg-red-500', 'bg-[#3a2618]'].map((c, i) => (
+                {['bg-amber-500', 'bg-orange-500', 'bg-red-500', 'bg-[#3c352f]'].map((c, i) => (
                   <div key={i} className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black text-white ${c}`}>
                     {['M', 'A', 'C', 'E'][i]}
                   </div>
@@ -39,7 +39,7 @@ export const Hero = () => {
                     <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                   ))}
                 </div>
-                <span className="text-xs font-black text-[#2a1d15]">4.9</span>
+                <span className="text-xs font-black text-[#26221e]">4.9</span>
                 <span className="text-xs font-bold text-stone-500 hidden sm:inline">· 1.200+ restoran</span>
               </div>
             </motion.div>
@@ -48,7 +48,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7, ease }}
-              className="text-[40px] sm:text-5xl lg:text-[64px] xl:text-7xl font-black text-[#1f1612] leading-[1.02] tracking-[-0.02em]"
+              className="text-[40px] sm:text-5xl lg:text-[64px] xl:text-7xl font-black text-[#1c1917] leading-[1.02] tracking-[-0.02em]"
               data-testid="hero-heading"
             >
               Restoranınızın
@@ -73,7 +73,7 @@ export const Hero = () => {
               transition={{ delay: 0.2, duration: 0.6, ease }}
               className="text-lg lg:text-xl text-stone-600 leading-relaxed max-w-xl font-medium"
             >
-              Sipariş akışından mutfak operasyonuna, masa yönetiminden çoklu şubeye. Restoranınızın tüm operasyonel altyapısı <span className="text-[#1f1612] font-bold">tek sistemde</span>.
+              Sipariş akışından mutfak operasyonuna, masa yönetiminden çoklu şubeye. Restoranınızın tüm operasyonel altyapısı <span className="text-[#1c1917] font-bold">tek sistemde</span>.
             </motion.p>
 
             <motion.div
@@ -95,7 +95,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="group h-14 px-7 border-2 border-stone-300 hover:border-[#1f1612] hover:bg-[#1f1612] hover:text-amber-50 text-[#1f1612] text-[15px] font-black bg-white transition-all duration-200 active:scale-[0.98] rounded-xl"
+                className="group h-14 px-7 border-2 border-stone-300 hover:border-[#1c1917] hover:bg-[#1c1917] hover:text-amber-50 text-[#1c1917] text-[15px] font-black bg-white transition-all duration-200 active:scale-[0.98] rounded-xl"
                 data-testid="hero-secondary-cta"
               >
                 <Play className="w-4 h-4 mr-2 fill-current" />
@@ -152,10 +152,10 @@ export const Hero = () => {
                 whileHover={{ rotate: -4, transition: { duration: 0.4 } }}
                 className="absolute -bottom-6 -left-4 sm:-left-12 w-[130px] sm:w-[160px] z-10"
               >
-                <div className="bg-[#1f1612] rounded-[2rem] p-1.5 shadow-2xl border-[3px] border-[#2a1f17]">
+                <div className="bg-[#1c1917] rounded-[2rem] p-1.5 shadow-2xl border-[3px] border-[#26221e]">
                   <div className="relative rounded-[1.6rem] aspect-[9/19] overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#fdf9f3] via-[#fbf3e7] to-[#f5ead7]" />
-                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-[#1f1612] rounded-full z-10" />
+                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-[#1c1917] rounded-full z-10" />
                     {/* feed silhouette */}
                     <div className="absolute inset-0 pt-8 px-3 space-y-2">
                       {[0,1,2].map((i) => (
@@ -183,7 +183,7 @@ export const Hero = () => {
                   </div>
                   <div className="min-w-0">
                     <div className="text-[10px] font-black text-stone-500 uppercase tracking-wider">Canlı</div>
-                    <div className="text-sm font-black text-[#1f1612] leading-tight">+47 sipariş</div>
+                    <div className="text-sm font-black text-[#1c1917] leading-tight">+47 sipariş</div>
                     <div className="text-[10px] text-stone-500 font-semibold">son 1 saatte</div>
                   </div>
                 </div>

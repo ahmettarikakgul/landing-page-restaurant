@@ -125,7 +125,7 @@ export const Workflow = () => {
                     <div className="text-[10px] font-black text-stone-400 uppercase tracking-[0.25em] mb-2">
                       Adım {steps[activeStep].num}
                     </div>
-                    <div className="text-2xl font-black text-[#1f1612]">{steps[activeStep].title}</div>
+                    <div className="text-2xl font-black text-[#1c1917]">{steps[activeStep].title}</div>
                   </motion.div>
                 </AnimatePresence>
               </div>

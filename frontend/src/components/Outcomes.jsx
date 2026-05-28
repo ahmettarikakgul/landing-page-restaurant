@@ -70,7 +70,7 @@ export const Outcomes = () => {
                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xl font-black shadow-md">B</div>
                       <div>
                         <div className="text-[10px] font-bold text-stone-500 uppercase tracking-wider">restoraniniz.com</div>
-                        <div className="text-base font-black text-[#1f1612]">Burger Palace · Maslak</div>
+                        <div className="text-base font-black text-[#1c1917]">Burger Palace · Maslak</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
@@ -78,7 +78,7 @@ export const Outcomes = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />
                         ))}
-                        <span className="ml-1 font-black text-[#1f1612]">4.9</span>
+                        <span className="ml-1 font-black text-[#1c1917]">4.9</span>
                       </div>
                       <span className="text-stone-400">·</span>
                       <span className="text-stone-600 font-semibold">842 yorum</span>
@@ -98,18 +98,18 @@ export const Outcomes = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             whileTap={{ scale: 0.99 }}
-            className="lg:col-span-5 relative rounded-3xl p-7 lg:p-10 overflow-hidden border border-amber-900/10"
-            style={{ background: 'linear-gradient(135deg, #2a1d15 0%, #3a2618 60%, #4a3220 100%)' }}
+            className="lg:col-span-5 relative rounded-3xl p-7 lg:p-10 overflow-hidden border border-amber-200/60"
+            style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%)' }}
           >
-            <div className="absolute inset-0 opacity-30" style={{
-              backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.2), transparent 50%)'
+            <div className="absolute inset-0 opacity-50" style={{
+              backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.6), transparent 50%)'
             }} />
             <div className="relative">
-              <div className="text-[10px] font-black text-amber-400 uppercase tracking-[0.2em] mb-3">Online Sipariş</div>
-              <h3 className="text-2xl lg:text-3xl font-black text-amber-50 leading-tight mb-3">
+              <div className="text-[10px] font-black text-amber-900 uppercase tracking-[0.2em] mb-3">Online Sipariş</div>
+              <h3 className="text-2xl lg:text-3xl font-black text-[#1c1917] leading-tight mb-3">
                 Telefon yerine link.
               </h3>
-              <p className="text-amber-100/70 leading-relaxed mb-8">
+              <p className="text-stone-700 leading-relaxed mb-8 font-medium">
                 Yemeksepeti, Getir, Trendyol entegrasyonu. Tüm online siparişler tek panelde.
               </p>
 
@@ -121,17 +121,21 @@ export const Outcomes = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + i * 0.08, duration: 0.4 }}
-                    className="flex items-center justify-between bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3"
+                    whileHover={{ x: 4 }}
+                    className="flex items-center justify-between bg-white/90 backdrop-blur-sm border border-white rounded-xl px-4 py-3 shadow-sm"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-amber-400/20 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-[#1c1917] flex items-center justify-center shadow-sm">
                         <ShoppingBag className="w-4 h-4 text-amber-400" strokeWidth={2.5} />
                       </div>
-                      <span className="text-sm font-bold text-amber-50">{src}</span>
+                      <span className="text-sm font-black text-[#1c1917]">{src}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                      <span className="text-[10px] font-black text-green-400 uppercase tracking-wider">Aktif</span>
+                      <div className="relative">
+                        <div className="w-2 h-2 bg-green-600 rounded-full" />
+                        <div className="absolute inset-0 w-2 h-2 bg-green-500 rounded-full animate-ping" />
+                      </div>
+                      <span className="text-[10px] font-black text-green-700 uppercase tracking-wider">Aktif</span>
                     </div>
                   </motion.div>
                 ))}

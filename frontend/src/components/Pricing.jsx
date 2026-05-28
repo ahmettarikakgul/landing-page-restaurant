@@ -13,7 +13,7 @@ const plans = [
     cta: 'Ücretsiz Başla',
     highlight: false,
     headline: 'Dijital dönüşüme ilk adım.',
-    color: { primary: '#1f1612' },
+    color: { primary: '#1c1917' },
     inside: {
       'Sipariş & Masa': ['Adisyon & POS', 'Masa Yönetimi', 'QR Menü'],
       'Müşteri': ['Temel menü düzenleme', 'Tek dil'],
@@ -30,7 +30,7 @@ const plans = [
     highlight: true,
     badge: 'En Popüler',
     headline: 'Operasyonun tamamı, tek panel.',
-    color: { primary: '#2a1d15' },
+    color: { primary: '#26221e' },
     inside: {
       'Sipariş & Masa': ['Adisyon & POS', 'Masa Yönetimi', 'QR Menü', 'Mutfak Ekranı (KDS)', 'Garson Uygulaması'],
       'Müşteri': ['3D Vitrin', 'Çoklu dil (12+)', 'Kampanya & Sadakat'],
@@ -46,7 +46,7 @@ const plans = [
     cta: 'İletişime Geç',
     highlight: false,
     headline: 'Sınırsız ölçek, özel altyapı.',
-    color: { primary: '#1f1612' },
+    color: { primary: '#1c1917' },
     inside: {
       'Sipariş & Masa': ['Profesyonel paketin tamamı'],
       'Müşteri': ['Özel menü tasarımı', 'Branded mobil uygulama'],
@@ -110,7 +110,7 @@ export const Pricing = () => {
             <div className="w-1.5 h-1.5 bg-amber-600 rounded-full" />
             <span className="text-[11px] font-black text-amber-900 uppercase tracking-[0.15em]">Fiyatlandırma</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-[#1f1612] leading-[1.05] tracking-tight mb-4" data-testid="pricing-heading">
+          <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-[#1c1917] leading-[1.05] tracking-tight mb-4" data-testid="pricing-heading">
             Tek karar:
             <span className="text-amber-600"> hangi paket?</span>
           </h2>
@@ -130,7 +130,7 @@ export const Pricing = () => {
               data-testid="billing-monthly"
             >
               {!yearly && (
-                <motion.div layoutId="billing-pill" className="absolute inset-0 bg-[#1f1612] rounded-full shadow" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
+                <motion.div layoutId="billing-pill" className="absolute inset-0 bg-[#1c1917] rounded-full shadow" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
               )}
               <span className="relative z-10">Aylık</span>
             </button>
@@ -142,11 +142,11 @@ export const Pricing = () => {
               data-testid="billing-yearly"
             >
               {yearly && (
-                <motion.div layoutId="billing-pill" className="absolute inset-0 bg-[#1f1612] rounded-full shadow" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
+                <motion.div layoutId="billing-pill" className="absolute inset-0 bg-[#1c1917] rounded-full shadow" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
               )}
               <span className="relative z-10 flex items-center gap-2">
                 Yıllık
-                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${yearly ? 'bg-amber-400 text-[#1f1612]' : 'bg-amber-100 text-amber-800'}`}>%20 İNDİRİM</span>
+                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${yearly ? 'bg-amber-400 text-[#1c1917]' : 'bg-amber-100 text-amber-800'}`}>%20 İNDİRİM</span>
               </span>
             </button>
           </div>
@@ -194,7 +194,7 @@ export const Pricing = () => {
                 <motion.div
                   animate={{
                     width: i === activeMobileIdx ? 28 : 8,
-                    backgroundColor: i === activeMobileIdx ? '#1f1612' : '#d6d3d1',
+                    backgroundColor: i === activeMobileIdx ? '#1c1917' : '#d6d3d1',
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   className="h-2 rounded-full"
@@ -214,7 +214,7 @@ export const Pricing = () => {
         >
           <div className="text-center mb-6 lg:mb-8">
             <div className="text-[10px] font-black text-amber-700 uppercase tracking-[0.2em] mb-2">Ek Modüller</div>
-            <h3 className="text-2xl lg:text-3xl font-black text-[#1f1612]">Paketinize ekleyebilirsiniz</h3>
+            <h3 className="text-2xl lg:text-3xl font-black text-[#1c1917]">Paketinize ekleyebilirsiniz</h3>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-3 lg:gap-4 max-w-5xl mx-auto">
@@ -232,7 +232,7 @@ export const Pricing = () => {
                   </div>
                   <span className="text-[10px] font-black text-stone-900 px-2 py-1 bg-stone-100 rounded-full uppercase tracking-wider">{addon.price}</span>
                 </div>
-                <div className="font-black text-[#1f1612] text-sm mb-1 leading-tight">{addon.name}</div>
+                <div className="font-black text-[#1c1917] text-sm mb-1 leading-tight">{addon.name}</div>
                 <div className="text-xs text-stone-600 font-medium leading-relaxed">{addon.desc}</div>
               </motion.button>
             ))}
@@ -241,7 +241,7 @@ export const Pricing = () => {
 
         <div className="mt-10 lg:mt-12 text-center">
           <p className="text-sm text-stone-500 font-bold">
-            Tüm planlarda <span className="text-[#1f1612]">14 gün ücretsiz deneme</span> · Kredi kartı gerekmez · İstediğin zaman iptal
+            Tüm planlarda <span className="text-[#1c1917]">14 gün ücretsiz deneme</span> · Kredi kartı gerekmez · İstediğin zaman iptal
           </p>
         </div>
       </div>
@@ -259,7 +259,7 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
       className={`relative rounded-3xl p-7 lg:p-8 transition-all duration-300 flex flex-col ${
         isPro ? 'shadow-2xl' : 'bg-white border-2 border-stone-200 hover:border-stone-300 hover:shadow-xl'
       }`}
-      style={isPro ? { background: 'linear-gradient(150deg, #1f1612 0%, #2a1d15 50%, #3a2618 100%)', borderColor: '#3a2618' } : {}}
+      style={isPro ? { background: 'linear-gradient(150deg, #1c1917 0%, #26221e 50%, #3c352f 100%)', borderColor: '#3c352f' } : {}}
       data-testid={`pricing-${plan.id}`}
     >
       {isPro && (
@@ -273,13 +273,13 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
 
       <div className="relative">
         {isPro && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400 text-[#1f1612] text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400 text-[#1c1917] text-[10px] font-black rounded-full mb-5 uppercase tracking-wider">
             <Sparkles className="w-3 h-3" strokeWidth={3} />
             {plan.badge}
           </div>
         )}
 
-        <h3 className={`text-2xl font-black mb-1 ${isPro ? 'text-amber-50' : 'text-[#1f1612]'}`}>{plan.name}</h3>
+        <h3 className={`text-2xl font-black mb-1 ${isPro ? 'text-amber-50' : 'text-[#1c1917]'}`}>{plan.name}</h3>
         <p className={`text-sm font-medium mb-1 ${isPro ? 'text-amber-100/60' : 'text-stone-600'}`}>{plan.pitch}</p>
         <p className={`text-base font-bold mb-6 leading-snug ${isPro ? 'text-amber-200' : 'text-amber-700'}`}>{plan.headline}</p>
 
@@ -287,7 +287,7 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
           {price ? (
             <>
               <div className="flex items-baseline gap-1.5 flex-wrap">
-                <span className={`text-5xl font-black tracking-tight ${isPro ? 'text-amber-400' : 'text-[#1f1612]'}`}>{formatPrice(price)}</span>
+                <span className={`text-5xl font-black tracking-tight ${isPro ? 'text-amber-400' : 'text-[#1c1917]'}`}>{formatPrice(price)}</span>
                 <span className={`text-sm font-bold ${isPro ? 'text-amber-100/50' : 'text-stone-500'}`}>/ay</span>
               </div>
               {yearly && (
@@ -296,7 +296,7 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
             </>
           ) : (
             <>
-              <div className={`text-3xl font-black ${isPro ? 'text-amber-400' : 'text-[#1f1612]'}`}>Özel teklif</div>
+              <div className={`text-3xl font-black ${isPro ? 'text-amber-400' : 'text-[#1c1917]'}`}>Özel teklif</div>
               <div className={`text-xs font-bold mt-2 ${isPro ? 'text-amber-100/50' : 'text-stone-500'}`}>İhtiyacınıza göre fiyatlandırılır</div>
             </>
           )}
@@ -304,7 +304,7 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
 
         <Button
           className={`w-full h-12 mb-5 font-black text-sm shadow-lg active:scale-[0.98] transition-all ${
-            isPro ? 'bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-[#1f1612] shadow-amber-500/30' : 'bg-[#1f1612] hover:bg-[#2a1d15] text-amber-50'
+            isPro ? 'bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-[#1c1917] shadow-amber-500/30' : 'bg-[#1c1917] hover:bg-[#26221e] text-amber-50'
           }`}
           data-testid={`pricing-cta-${plan.id}`}
         >
@@ -317,7 +317,7 @@ const DesktopPlanCard = ({ plan, yearly, isExpanded, onToggle }) => {
         <button
           onClick={onToggle}
           className={`w-full flex items-center justify-between py-3 font-black text-sm transition-colors ${
-            isPro ? 'text-amber-100/80 hover:text-amber-50' : 'text-stone-700 hover:text-[#1f1612]'
+            isPro ? 'text-amber-100/80 hover:text-amber-50' : 'text-stone-700 hover:text-[#1c1917]'
           }`}
         >
           <span>Paket içeriği</span>
@@ -373,7 +373,7 @@ const MobilePlanCard = ({ plan, yearly, isActive }) => {
       className={`snap-center flex-shrink-0 w-[88%] rounded-3xl p-7 relative overflow-hidden ${
         isPro ? 'shadow-2xl' : 'bg-white border-2 border-stone-200'
       }`}
-      style={isPro ? { background: 'linear-gradient(150deg, #1f1612 0%, #2a1d15 50%, #3a2618 100%)' } : {}}
+      style={isPro ? { background: 'linear-gradient(150deg, #1c1917 0%, #26221e 50%, #3c352f 100%)' } : {}}
     >
       {isPro && (
         <div className="absolute inset-0 opacity-30 rounded-3xl" style={{
@@ -383,29 +383,29 @@ const MobilePlanCard = ({ plan, yearly, isActive }) => {
 
       <div className="relative">
         {isPro && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400 text-[#1f1612] text-[10px] font-black rounded-full mb-4 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400 text-[#1c1917] text-[10px] font-black rounded-full mb-4 uppercase tracking-wider">
             <Sparkles className="w-3 h-3" strokeWidth={3} />
             {plan.badge}
           </div>
         )}
 
-        <h3 className={`text-2xl font-black mb-1 ${isPro ? 'text-amber-50' : 'text-[#1f1612]'}`}>{plan.name}</h3>
+        <h3 className={`text-2xl font-black mb-1 ${isPro ? 'text-amber-50' : 'text-[#1c1917]'}`}>{plan.name}</h3>
         <p className={`text-sm font-medium mb-6 ${isPro ? 'text-amber-100/60' : 'text-stone-600'}`}>{plan.pitch}</p>
 
         <div className="mb-6">
           {price ? (
             <div className="flex items-baseline gap-1.5 flex-wrap">
-              <span className={`text-5xl font-black tracking-tight ${isPro ? 'text-amber-400' : 'text-[#1f1612]'}`}>{formatPrice(price)}</span>
+              <span className={`text-5xl font-black tracking-tight ${isPro ? 'text-amber-400' : 'text-[#1c1917]'}`}>{formatPrice(price)}</span>
               <span className={`text-sm font-bold ${isPro ? 'text-amber-100/50' : 'text-stone-500'}`}>/ay</span>
             </div>
           ) : (
-            <div className={`text-3xl font-black ${isPro ? 'text-amber-400' : 'text-[#1f1612]'}`}>Özel teklif</div>
+            <div className={`text-3xl font-black ${isPro ? 'text-amber-400' : 'text-[#1c1917]'}`}>Özel teklif</div>
           )}
         </div>
 
         <Button
           className={`w-full h-14 mb-4 font-black text-sm active:scale-[0.97] transition-transform ${
-            isPro ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-[#1f1612] shadow-lg shadow-amber-500/30' : 'bg-[#1f1612] text-amber-50'
+            isPro ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-[#1c1917] shadow-lg shadow-amber-500/30' : 'bg-[#1c1917] text-amber-50'
           }`}
         >
           {plan.cta}

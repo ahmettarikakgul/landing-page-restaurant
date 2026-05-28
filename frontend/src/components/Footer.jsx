@@ -34,7 +34,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative text-amber-100/80 overflow-hidden" style={{ background: 'linear-gradient(180deg, #1a120e 0%, #1f1612 100%)' }}>
+    <footer className="relative text-amber-100/80 overflow-hidden" style={{ background: 'linear-gradient(180deg, #171411 0%, #1c1917 100%)' }}>
       {/* Background patterns */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-amber-900/15 via-transparent to-transparent blur-3xl" />
@@ -56,7 +56,7 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="ornek@restoraniniz.com"
-                className="flex-1 px-5 py-4 bg-[#2a1d15] border-2 border-amber-900/20 hover:border-stone-700 focus:border-amber-500 focus:outline-none rounded-xl text-amber-50 placeholder-amber-100/30 font-medium transition-colors"
+                className="flex-1 px-5 py-4 bg-[#26221e] border-2 border-amber-900/20 hover:border-stone-700 focus:border-amber-500 focus:outline-none rounded-xl text-amber-50 placeholder-amber-100/30 font-medium transition-colors"
               />
               <button className="group px-6 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-stone-900 font-black rounded-xl shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
                 Abone Ol
@@ -92,19 +92,19 @@ export const Footer = () => {
               {/* Contact */}
               <div className="space-y-4">
                 <a href="tel:+902121234567" className="flex items-center text-amber-100/60 hover:text-amber-400 transition-colors group">
-                  <div className="w-10 h-10 bg-[#2a1d15] group-hover:bg-amber-500/15 border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 transition-colors">
+                  <div className="w-10 h-10 bg-[#26221e] group-hover:bg-amber-500/15 border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 transition-colors">
                     <Phone className="w-4 h-4" />
                   </div>
                   <span className="font-bold">+90 (212) 123 45 67</span>
                 </a>
                 <a href="mailto:info@restorax.com" className="flex items-center text-amber-100/60 hover:text-amber-400 transition-colors group">
-                  <div className="w-10 h-10 bg-[#2a1d15] group-hover:bg-amber-500/15 border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 transition-colors">
+                  <div className="w-10 h-10 bg-[#26221e] group-hover:bg-amber-500/15 border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   <span className="font-bold">info@restorax.com</span>
                 </a>
                 <div className="flex items-start text-amber-100/60">
-                  <div className="w-10 h-10 bg-[#2a1d15] border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 flex-shrink-0">
+                  <div className="w-10 h-10 bg-[#26221e] border border-amber-900/20 rounded-xl flex items-center justify-center mr-3 flex-shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <span className="font-bold pt-2">Maslak, Sarıyer<br/>İstanbul, Türkiye</span>
@@ -154,7 +154,7 @@ export const Footer = () => {
                 <a 
                   key={i}
                   href="#" 
-                  className="w-11 h-11 bg-[#2a1d15] hover:bg-amber-500/15 border border-amber-900/20 hover:border-amber-700 rounded-xl flex items-center justify-center text-amber-100/60 hover:text-amber-400 transition-all duration-200 hover:scale-110"
+                  className="w-11 h-11 bg-[#26221e] hover:bg-amber-500/15 border border-amber-900/20 hover:border-amber-700 rounded-xl flex items-center justify-center text-amber-100/60 hover:text-amber-400 transition-all duration-200 hover:scale-110"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
