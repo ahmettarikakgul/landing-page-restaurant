@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 export const Navbar = () => {
@@ -18,39 +18,42 @@ export const Navbar = () => {
     { label: 'Özellikler', href: '#features' },
     { label: 'Fiyatlandırma', href: '#pricing' },
     { label: 'Müşteriler', href: '#testimonials' },
-    { label: 'SSS', href: '#faq' }
+    { label: 'İletişim', href: '#contact' }
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-stone-200/80'
-          : 'bg-transparent'
+          ? 'bg-white/98 backdrop-blur-xl shadow-lg border-b-2 border-amber-100'
+          : 'bg-white/80 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-teal-700 rounded-xl blur-sm opacity-60 group-hover:opacity-80 transition-opacity" />
-                <div className="relative w-10 h-10 lg:w-11 lg:h-11 bg-gradient-to-br from-teal-600 to-teal-700 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-xl lg:text-2xl">R</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl blur-md opacity-60 group-hover:opacity-80 transition-opacity" />
+                <div className="relative w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center shadow-xl">
+                  <span className="text-white font-black text-2xl">R</span>
                 </div>
               </div>
-              <span className="text-xl lg:text-2xl font-bold text-stone-900 tracking-tight">RestoraX</span>
+              <div>
+                <span className="text-2xl font-black text-stone-900 tracking-tight">RestoraX</span>
+                <div className="text-[10px] font-semibold text-amber-600 -mt-1">Restoran Yönetimi</div>
+              </div>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-stone-700 hover:text-teal-600 font-medium transition-all duration-200 hover:bg-teal-50/50 rounded-lg"
+                className="px-5 py-2.5 text-stone-700 hover:text-amber-600 font-bold text-sm transition-all duration-200 hover:bg-amber-50 rounded-xl"
               >
                 {link.label}
               </a>
@@ -59,18 +62,21 @@ export const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Button variant="ghost" className="text-stone-700 hover:text-teal-600 hover:bg-teal-50">
+            <Button 
+              variant="ghost" 
+              className="text-stone-700 hover:text-amber-600 hover:bg-amber-50 font-bold"
+            >
               Giriş Yap
             </Button>
-            <Button className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg shadow-teal-600/30 hover:shadow-xl hover:shadow-teal-600/40 transition-all duration-200">
-              Ücretsiz Dene
+            <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-black shadow-lg shadow-red-600/40 hover:shadow-xl hover:shadow-red-600/50 transition-all duration-200 px-6">
+              Ücretsiz Başlayın
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition-all duration-200"
+            className="lg:hidden p-3 rounded-xl text-stone-700 hover:bg-amber-50 transition-all duration-200"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -79,24 +85,24 @@ export const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-stone-200 shadow-2xl">
+        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t-2 border-amber-100 shadow-2xl">
           <div className="px-4 py-6 space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="block text-stone-700 hover:text-teal-600 font-medium py-3 px-4 hover:bg-teal-50 rounded-lg transition-all duration-200"
+                className="block text-stone-700 hover:text-amber-600 font-bold py-3 px-4 hover:bg-amber-50 rounded-xl transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 space-y-3 border-t border-stone-200">
-              <Button variant="outline" className="w-full border-2">
+            <div className="pt-4 space-y-3 border-t-2 border-amber-100">
+              <Button variant="outline" className="w-full border-2 border-stone-300 font-bold">
                 Giriş Yap
               </Button>
-              <Button className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg">
-                Ücretsiz Dene
+              <Button className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-black shadow-lg">
+                Ücretsiz Başlayın
               </Button>
             </div>
           </div>
