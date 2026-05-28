@@ -1,0 +1,28 @@
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove default text-align center */
+.App {
+    text-align: left;
+}
+
+/* Button hover transitions */
+button {
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Link smooth transitions */
+a {
+    transition: color 0.2s ease;
+}
+
+/* Prevent layout shift on scroll */
+body {
+    overflow-x: hidden;
+}
