@@ -88,7 +88,7 @@ export const Pricing = () => {
             <button
               onClick={() => setYearly(false)}
               className={`px-5 py-2.5 rounded-full text-sm font-black transition-all ${
-                !yearly ? 'bg-stone-900 text-white shadow' : 'text-stone-600 hover:text-stone-900'
+                !yearly ? 'bg-[#1f1612] text-amber-50 shadow' : 'text-stone-600 hover:text-stone-900'
               }`}
               data-testid="billing-monthly"
             >
@@ -97,7 +97,7 @@ export const Pricing = () => {
             <button
               onClick={() => setYearly(true)}
               className={`px-5 py-2.5 rounded-full text-sm font-black transition-all flex items-center gap-2 ${
-                yearly ? 'bg-stone-900 text-white shadow' : 'text-stone-600 hover:text-stone-900'
+                yearly ? 'bg-[#1f1612] text-amber-50 shadow' : 'text-stone-600 hover:text-stone-900'
               }`}
               data-testid="billing-yearly"
             >
@@ -125,9 +125,11 @@ export const Pricing = () => {
               >
                 <div className={`relative h-full rounded-3xl p-7 lg:p-8 border-2 transition-all duration-300 overflow-hidden flex flex-col ${
                   plan.highlighted
-                    ? 'bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 border-stone-900 shadow-2xl'
+                    ? 'border-[#3a2618] shadow-2xl'
                     : 'bg-white border-stone-200 hover:border-stone-300 hover:shadow-xl'
-                }`}>
+                }`}
+                style={plan.highlighted ? { background: 'linear-gradient(135deg, #2a1d15 0%, #3a2618 50%, #2a1d15 100%)' } : {}}
+                >
                   {plan.highlighted && (
                     <>
                       <div className="absolute inset-0 opacity-30" style={{
@@ -187,7 +189,7 @@ export const Pricing = () => {
                       className={`w-full h-12 mb-6 font-black text-sm shadow-lg transition-all ${
                         plan.highlighted
                           ? 'bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-stone-900 shadow-amber-500/30'
-                          : 'bg-stone-900 hover:bg-stone-800 text-white'
+                          : 'bg-[#1f1612] hover:bg-[#2a1d15] text-amber-50'
                       }`}
                       data-testid={`pricing-cta-${plan.id}`}
                     >

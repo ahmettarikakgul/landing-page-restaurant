@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
@@ -36,12 +37,27 @@ const testimonials = [
     role: 'Operasyon Direktörü',
     brand: 'Fırın+',
     rating: 5,
-    color: 'from-stone-700 to-stone-900',
+    color: 'from-[#3a2a1f] to-[#2a1d15]',
   },
 ];
 
 export const Testimonials = () => {
   const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const card = el.querySelector('[data-card]');
+      if (!card) return;
+      const width = card.offsetWidth + 12;
+      const idx = Math.round(el.scrollLeft / width);
+      setActiveIndex(Math.min(idx, testimonials.length - 1));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
 
   const scroll = (dir) => {
     if (!scrollRef.current) return;
@@ -51,21 +67,25 @@ export const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="relative py-20 lg:py-32 bg-white overflow-hidden">
+    <section id="testimonials" className="relative py-20 lg:py-32 bg-stone-50 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[500px] h-[500px] bg-gradient-radial from-amber-100/30 via-transparent to-transparent blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-orange-100/20 via-transparent to-transparent blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header + Controls */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-14"
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 border border-amber-200 rounded-full mb-5">
               <div className="w-1.5 h-1.5 bg-amber-600 rounded-full" />
               <span className="text-[11px] font-black text-amber-900 uppercase tracking-[0.15em]">Müşteri Görüşleri</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-stone-900 leading-[1.05] tracking-tight mb-4" data-testid="testimonials-heading">
+            <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-stone-900 leading-[1.05] tracking-tight mb-4">
               1.200+ restoran
               <span className="block text-amber-600">bize güveniyor</span>
             </h2>
@@ -74,42 +94,42 @@ export const Testimonials = () => {
             </p>
           </div>
 
-          {/* Carousel controls */}
           <div className="hidden lg:flex items-center gap-2">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.92 }}
               onClick={() => scroll(-1)}
               data-testid="testimonial-prev"
-              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-all duration-200 active:scale-95"
+              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-colors duration-200"
               aria-label="Önceki"
             >
               <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.92 }}
               onClick={() => scroll(1)}
               data-testid="testimonial-next"
-              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-all duration-200 active:scale-95"
+              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-colors duration-200"
               aria-label="Sonraki"
             >
               <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Carousel - snap scroll on all screens */}
+        {/* Story-style snap carousel */}
         <div
           ref={scrollRef}
           className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4 sm:mx-0 sm:px-0"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           data-testid="testimonials-carousel"
         >
           {testimonials.map((t, idx) => (
-            <article
+            <motion.article
               key={t.id}
               data-card
               data-testid={`testimonial-card-${idx}`}
-              className="snap-start flex-shrink-0 w-[85%] sm:w-[55%] lg:w-[calc((100%-2.5rem)/3)] bg-white rounded-3xl p-6 lg:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl transition-all duration-300 flex flex-col"
+              whileTap={{ scale: 0.98 }}
+              className="snap-start flex-shrink-0 w-[88%] sm:w-[55%] lg:w-[calc((100%-2.5rem)/3)] bg-white rounded-3xl p-6 lg:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl transition-all duration-300 flex flex-col"
             >
-              {/* Top: Quote icon + stars */}
               <div className="flex items-start justify-between mb-5">
                 <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${t.color} flex items-center justify-center shadow-md`}>
                   <Quote className="w-5 h-5 text-white fill-white" />
@@ -121,12 +141,10 @@ export const Testimonials = () => {
                 </div>
               </div>
 
-              {/* Quote */}
               <blockquote className="text-stone-800 text-base lg:text-[17px] leading-relaxed font-medium flex-1 mb-6">
                 {t.quote}
               </blockquote>
 
-              {/* Author */}
               <div className="flex items-center justify-between pt-5 border-t border-stone-100">
                 <div className="flex items-center gap-3">
                   <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center shadow-sm`}>
@@ -137,19 +155,26 @@ export const Testimonials = () => {
                     <div className="text-xs text-stone-500 font-semibold mt-0.5">{t.role}</div>
                   </div>
                 </div>
-                {/* Brand chip */}
                 <div className="text-[10px] font-black text-stone-900 px-2.5 py-1 bg-stone-100 rounded-full uppercase tracking-wider">
                   {t.brand}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
-        {/* Mobile pagination hint */}
-        <div className="lg:hidden flex items-center justify-center gap-1.5 mt-4">
+        {/* Active pagination dots */}
+        <div className="flex items-center justify-center gap-1.5 mt-5">
           {testimonials.map((_, i) => (
-            <div key={i} className={`h-1 rounded-full transition-all ${i === 0 ? 'w-6 bg-stone-900' : 'w-1.5 bg-stone-300'}`} />
+            <motion.div
+              key={i}
+              animate={{
+                width: i === activeIndex ? 24 : 6,
+                backgroundColor: i === activeIndex ? '#1f1612' : '#d6d3d1',
+              }}
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              className="h-1.5 rounded-full"
+            />
           ))}
         </div>
 
@@ -161,10 +186,17 @@ export const Testimonials = () => {
             { value: '%40', label: 'Hız artışı' },
             { value: '7/24', label: 'Türkçe destek' },
           ].map((s, i) => (
-            <div key={i} className="bg-white p-6 lg:p-8 text-center">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.5 }}
+              className="bg-white p-6 lg:p-8 text-center"
+            >
               <div className="text-3xl lg:text-4xl font-black text-stone-900 mb-1">{s.value}</div>
               <div className="text-xs lg:text-sm text-stone-500 font-bold uppercase tracking-wider">{s.label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

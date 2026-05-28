@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { LogoBar } from './components/LogoBar';
 import { Modules } from './components/Modules';
 import { Workflow } from './components/Workflow';
+import { Outcomes } from './components/Outcomes';
 import { Testimonials } from './components/Testimonials';
 import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
@@ -20,6 +21,7 @@ function App() {
       <LogoBar />
       <Modules />
       <Workflow />
+      <Outcomes />
       <Testimonials />
       <Pricing />
       <FAQ />

@@ -66,7 +66,7 @@ export const Navbar = () => {
               <Button variant="ghost" className="text-stone-700 hover:text-stone-900 hover:bg-stone-100 font-bold text-sm" data-testid="nav-login-btn">
                 Giriş
               </Button>
-              <Button className="bg-stone-900 hover:bg-stone-800 text-white font-black text-sm shadow-sm px-5 h-10" data-testid="nav-cta-btn">
+              <Button className="bg-[#1f1612] hover:bg-[#2a1d15] text-amber-50 font-black text-sm shadow-sm px-5 h-10" data-testid="nav-cta-btn">
                 Ücretsiz Dene <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>
