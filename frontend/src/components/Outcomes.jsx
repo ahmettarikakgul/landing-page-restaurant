@@ -49,10 +49,10 @@ export const Outcomes = () => {
                 Restoranınızın dijital kimliği, arama sonuçlarında ön plana çıkar. Müşteri sizi arar, sizi bulur.
               </p>
 
-              {/* Google search composition */}
-              <div className="relative mt-6 max-w-lg">
+              {/* Editorial atmospheric composition - no fake UI */}
+              <div className="relative mt-2 max-w-lg">
                 <div className="bg-white rounded-2xl shadow-xl border border-stone-200 overflow-hidden">
-                  {/* Browser bar */}
+                  {/* Browser bar - kept minimal as it's frame, not fake UI */}
                   <div className="flex items-center gap-2 px-3 py-2.5 bg-stone-50 border-b border-stone-200">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 rounded-full bg-stone-300" />
@@ -61,37 +61,29 @@ export const Outcomes = () => {
                     </div>
                     <div className="flex-1 mx-2 bg-white rounded px-2 py-1 text-[9px] font-mono text-stone-400 border border-stone-200 inline-flex items-center gap-1">
                       <Search className="w-2.5 h-2.5" />
-                      google.com/search
+                      google.com
                     </div>
                   </div>
-                  <div className="p-5">
-                    {/* Search bar */}
-                    <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 rounded-full border border-stone-200 mb-4">
-                      <Search className="w-3.5 h-3.5 text-stone-400" />
-                      <span className="text-xs text-stone-700 font-medium">istanbul burger</span>
+                  {/* Brand showcase - real, intentional */}
+                  <div className="p-6 bg-gradient-to-br from-[#fdf9f3] via-white to-[#fbf3e7]">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xl font-black shadow-md">B</div>
+                      <div>
+                        <div className="text-[10px] font-bold text-stone-500 uppercase tracking-wider">restoraniniz.com</div>
+                        <div className="text-base font-black text-[#1f1612]">Burger Palace · Maslak</div>
+                      </div>
                     </div>
-                    {/* Result */}
-                    <div className="space-y-2.5">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-[10px] font-black shadow-sm">B</div>
-                        <div>
-                          <div className="text-[10px] font-bold text-stone-500">restoraniniz.com</div>
-                          <div className="text-sm font-black text-blue-700">Burger Palace · Maslak</div>
-                        </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <div className="flex items-center gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />
+                        ))}
+                        <span className="ml-1 font-black text-[#1f1612]">4.9</span>
                       </div>
-                      <div className="flex items-center gap-2 text-[10px]">
-                        <div className="flex items-center gap-0.5">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
-                          ))}
-                          <span className="ml-0.5 font-black text-stone-700">4.9</span>
-                        </div>
-                        <span className="text-stone-400">·</span>
-                        <span className="text-stone-600 font-semibold">(842 yorum)</span>
-                        <span className="text-stone-400">·</span>
-                        <span className="text-green-700 font-bold">Açık</span>
-                      </div>
-                      <p className="text-xs text-stone-600 leading-relaxed">Premium burger ve özel soslar. RestoraX ile online sipariş, masa rezervasyonu ve dijital menü hizmeti.</p>
+                      <span className="text-stone-400">·</span>
+                      <span className="text-stone-600 font-semibold">842 yorum</span>
+                      <span className="text-stone-400">·</span>
+                      <span className="text-green-700 font-bold">Açık</span>
                     </div>
                   </div>
                 </div>

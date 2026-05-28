@@ -99,51 +99,35 @@ export const Workflow = () => {
             <div className="relative">
               <div className="absolute -inset-8 bg-gradient-to-br from-amber-300/20 via-orange-300/10 to-red-300/15 rounded-[3rem] blur-3xl -z-10" />
 
-              <div className="relative bg-white rounded-2xl shadow-[0_30px_80px_-20px_rgba(80,40,20,0.18)] border border-stone-200 overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-stone-50 border-b border-stone-200">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
-                  </div>
-                  <div className="flex-1 mx-3">
-                    <div className="bg-white rounded-md px-3 py-1 text-[10px] font-mono text-stone-400 border border-stone-200 inline-flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-amber-500" />
-                      app.restorax.com/dashboard
+              {/* Abstract atmospheric stage - no fake browser */}
+              <div className="relative rounded-3xl shadow-[0_30px_80px_-20px_rgba(80,40,20,0.18)] border border-amber-100 overflow-hidden aspect-[16/10]">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#fdf9f3] via-[#fbf3e7] to-[#f5ead7]" />
+                <div className="absolute inset-x-16 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent" />
+                <div className="absolute top-1/3 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-amber-100/40 to-transparent" />
+
+                {/* Animated step indicator */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeStep}
+                    initial={{ opacity: 0, y: 16, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -12, scale: 0.96 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0 flex flex-col items-center justify-center"
+                  >
+                    <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-2xl shadow-amber-500/30 mb-5">
+                      {(() => {
+                        const Icon = steps[activeStep].icon;
+                        return <Icon className="w-9 h-9 text-white" strokeWidth={2.5} />;
+                      })()}
                     </div>
-                  </div>
-                </div>
-
-                <div className="relative bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-100 aspect-[16/10]">
-                  {/* cinematic light */}
-                  <div className="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
-                  <div className="absolute inset-x-12 top-0 h-1/3 bg-gradient-to-b from-white/50 to-transparent" />
-                  <div className="absolute inset-0 opacity-40" style={{
-                    backgroundImage: 'linear-gradient(to right, rgba(120,100,80,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,100,80,0.05) 1px, transparent 1px)',
-                    backgroundSize: '56px 56px'
-                  }} />
-
-                  {/* Animated step indicator */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeStep}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -12 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute inset-0 flex items-center justify-center"
-                    >
-                      <div className="text-center">
-                        <div className="text-[10px] font-black text-stone-400 uppercase tracking-[0.25em] mb-3">
-                          Adım {steps[activeStep].num}
-                        </div>
-                        <div className="text-2xl font-black text-stone-700">{steps[activeStep].title}</div>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-
-                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-amber-100/30 to-transparent" />
-                </div>
+                    <div className="text-[10px] font-black text-stone-400 uppercase tracking-[0.25em] mb-2">
+                      Adım {steps[activeStep].num}
+                    </div>
+                    <div className="text-2xl font-black text-[#1f1612]">{steps[activeStep].title}</div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
               {/* Device strip */}
