@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 export const Navbar = () => {
@@ -25,7 +25,7 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200'
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-stone-200/80'
           : 'bg-transparent'
       }`}
     >
@@ -33,21 +33,24 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center space-x-2">
-              <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg lg:text-xl">R</span>
+            <a href="/" className="flex items-center space-x-3 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-teal-700 rounded-xl blur-sm opacity-60 group-hover:opacity-80 transition-opacity" />
+                <div className="relative w-10 h-10 lg:w-11 lg:h-11 bg-gradient-to-br from-teal-600 to-teal-700 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-xl lg:text-2xl">R</span>
+                </div>
               </div>
-              <span className="text-xl lg:text-2xl font-bold text-stone-900">RestoraX</span>
+              <span className="text-xl lg:text-2xl font-bold text-stone-900 tracking-tight">RestoraX</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-stone-700 hover:text-teal-600 font-medium transition-colors duration-200"
+                className="px-4 py-2 text-stone-700 hover:text-teal-600 font-medium transition-all duration-200 hover:bg-teal-50/50 rounded-lg"
               >
                 {link.label}
               </a>
@@ -55,11 +58,11 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" className="text-stone-700 hover:text-teal-600">
+          <div className="hidden lg:flex items-center space-x-3">
+            <Button variant="ghost" className="text-stone-700 hover:text-teal-600 hover:bg-teal-50">
               Giriş Yap
             </Button>
-            <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+            <Button className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg shadow-teal-600/30 hover:shadow-xl hover:shadow-teal-600/40 transition-all duration-200">
               Ücretsiz Dene
             </Button>
           </div>
@@ -67,7 +70,7 @@ export const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-stone-700 hover:bg-stone-100 transition-colors"
+            className="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition-all duration-200"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -76,23 +79,23 @@ export const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-stone-200 shadow-lg">
-          <div className="px-4 py-6 space-y-4">
+        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-stone-200 shadow-2xl">
+          <div className="px-4 py-6 space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="block text-stone-700 hover:text-teal-600 font-medium py-2 transition-colors"
+                className="block text-stone-700 hover:text-teal-600 font-medium py-3 px-4 hover:bg-teal-50 rounded-lg transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
             <div className="pt-4 space-y-3 border-t border-stone-200">
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full border-2">
                 Giriş Yap
               </Button>
-              <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white">
+              <Button className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg">
                 Ücretsiz Dene
               </Button>
             </div>

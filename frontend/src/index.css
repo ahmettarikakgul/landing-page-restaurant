@@ -113,3 +113,39 @@ code {
         border-bottom-color: inherit;
     }
 }
+
+
+@layer utilities {
+  /* Custom gradient utilities */
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced transitions */
+  button,
+  a {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Prevent layout shift */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better focus states */
+  *:focus-visible {
+    outline: 2px solid rgb(15 118 110);
+    outline-offset: 2px;
+  }
+}
