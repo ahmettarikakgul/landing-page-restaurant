@@ -1,115 +1,171 @@
-import React from 'react';
-import { Star, Quote } from 'lucide-react';
-import { mockData } from '../mock';
+import React, { useRef } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const testimonials = [
+  {
+    id: 1,
+    quote: "Sipariş süremiz %40 azaldı, mutfak operasyonu artık çok daha senkronize. 3 şubemizi tek panelden yönetiyoruz.",
+    name: 'Mehmet Yılmaz',
+    role: 'Kurucu',
+    brand: 'Burger Palace',
+    rating: 5,
+    color: 'from-amber-500 to-orange-500',
+  },
+  {
+    id: 2,
+    quote: "QR menü ve masa yönetimi sayesinde müşteri memnuniyeti gözle görülür arttı. Kurulum gerçekten 5 dakika.",
+    name: 'Ayşe Demir',
+    role: 'İşletme Müdürü',
+    brand: 'Cafe Aroma',
+    rating: 5,
+    color: 'from-orange-500 to-red-500',
+  },
+  {
+    id: 3,
+    quote: "Mutfak ekranı ve garson uygulaması iş akışımızı tamamen değiştirdi. Ekip olarak çok memnunuz.",
+    name: 'Can Özkan',
+    role: 'Patron',
+    brand: 'Lezzet Durağı',
+    rating: 5,
+    color: 'from-red-500 to-red-700',
+  },
+  {
+    id: 4,
+    quote: "Raporlama modülü ile veriye dayalı karar almaya başladık. Hangi ürün, hangi saatte, hangi şubede ne kadar satıyor görüyoruz.",
+    name: 'Elif Kaya',
+    role: 'Operasyon Direktörü',
+    brand: 'Fırın+',
+    rating: 5,
+    color: 'from-stone-700 to-stone-900',
+  },
+];
 
 export const Testimonials = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (dir) => {
+    if (!scrollRef.current) return;
+    const card = scrollRef.current.querySelector('[data-card]');
+    const width = card ? card.offsetWidth + 16 : 320;
+    scrollRef.current.scrollBy({ left: dir * width, behavior: 'smooth' });
+  };
+
   return (
-    <section id="testimonials" className="relative py-20 lg:py-32 overflow-hidden bg-stone-50">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/40 via-white to-stone-50" />
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-gradient-radial from-amber-100/30 via-transparent to-transparent blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-orange-100/30 via-transparent to-transparent blur-3xl" />
+    <section id="testimonials" className="relative py-20 lg:py-32 bg-white overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[500px] h-[500px] bg-gradient-radial from-amber-100/30 via-transparent to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-orange-100/20 via-transparent to-transparent blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 border border-amber-300 rounded-full mb-6">
-            <div className="w-2 h-2 bg-amber-600 rounded-full" />
-            <span className="text-xs font-black text-amber-900 uppercase tracking-widest">Müşteri Görüşleri</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header + Controls */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-14">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 border border-amber-200 rounded-full mb-5">
+              <div className="w-1.5 h-1.5 bg-amber-600 rounded-full" />
+              <span className="text-[11px] font-black text-amber-900 uppercase tracking-[0.15em]">Müşteri Görüşleri</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-stone-900 leading-[1.05] tracking-tight mb-4" data-testid="testimonials-heading">
+              1.200+ restoran
+              <span className="block text-amber-600">bize güveniyor</span>
+            </h2>
+            <p className="text-base lg:text-lg text-stone-600 leading-relaxed">
+              Her gün yüz binlerce sipariş RestoraX üzerinden geçiyor.
+            </p>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 mb-6 leading-[1.05] tracking-tight">
-            1.200+ restoran
-            <span className="block text-amber-600">bize güveniyor</span>
-          </h2>
-          <p className="text-lg lg:text-xl text-stone-600 leading-relaxed font-medium">
-            Her gün yüz binlerce sipariş RestoraX üzerinden geçiyor. İşte müşterilerimizin deneyimleri.
-          </p>
+
+          {/* Carousel controls */}
+          <div className="hidden lg:flex items-center gap-2">
+            <button
+              onClick={() => scroll(-1)}
+              data-testid="testimonial-prev"
+              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-all duration-200 active:scale-95"
+              aria-label="Önceki"
+            >
+              <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={() => scroll(1)}
+              data-testid="testimonial-next"
+              className="w-12 h-12 rounded-full border-2 border-stone-200 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 flex items-center justify-center transition-all duration-200 active:scale-95"
+              aria-label="Sonraki"
+            >
+              <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
+            </button>
+          </div>
         </div>
 
-        {/* Featured Testimonial */}
-        <div className="grid lg:grid-cols-12 gap-6 mb-6">
-          {/* Featured testimonial - large */}
-          <div className="lg:col-span-7 relative bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 rounded-3xl p-10 lg:p-14 overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-amber-500/20 via-transparent to-transparent blur-3xl" />
-            
-            <div className="relative">
-              <Quote className="w-16 h-16 text-amber-400/40 mb-6" />
-              <div className="flex mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
-                ))}
+        {/* Carousel - snap scroll on all screens */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4 sm:mx-0 sm:px-0"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          data-testid="testimonials-carousel"
+        >
+          {testimonials.map((t, idx) => (
+            <article
+              key={t.id}
+              data-card
+              data-testid={`testimonial-card-${idx}`}
+              className="snap-start flex-shrink-0 w-[85%] sm:w-[55%] lg:w-[calc((100%-2.5rem)/3)] bg-white rounded-3xl p-6 lg:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl transition-all duration-300 flex flex-col"
+            >
+              {/* Top: Quote icon + stars */}
+              <div className="flex items-start justify-between mb-5">
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${t.color} flex items-center justify-center shadow-md`}>
+                  <Quote className="w-5 h-5 text-white fill-white" />
+                </div>
+                <div className="flex">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                  ))}
+                </div>
               </div>
-              <blockquote className="text-2xl lg:text-3xl text-white font-bold leading-relaxed mb-8">
-                "RestoraX'i kullanmaya başladığımızdan beri sipariş süremiz <span className="text-amber-400">%40 azaldı</span>, müşteri memnuniyeti tavan yaptı. 3 şubemizi tek bir panelden yönetiyoruz."
+
+              {/* Quote */}
+              <blockquote className="text-stone-800 text-base lg:text-[17px] leading-relaxed font-medium flex-1 mb-6">
+                {t.quote}
               </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
-                  <span className="text-white font-black text-xl">M</span>
-                </div>
-                <div>
-                  <div className="font-black text-white text-lg">Mehmet Yılmaz</div>
-                  <div className="text-amber-400 font-semibold">Kurucu · Burger Palace</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Two smaller testimonials */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-5">
-            {mockData.testimonials.slice(1).map((t) => (
-              <div
-                key={t.id}
-                className="group relative bg-white rounded-3xl p-8 border-2 border-stone-200 hover:border-amber-300 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-amber-50 via-transparent to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="flex mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-                    ))}
+              {/* Author */}
+              <div className="flex items-center justify-between pt-5 border-t border-stone-100">
+                <div className="flex items-center gap-3">
+                  <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center shadow-sm`}>
+                    <span className="text-white font-black text-base">{t.name.charAt(0)}</span>
                   </div>
-                  <p className="text-stone-700 mb-5 leading-relaxed font-medium">"{t.content}"</p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-stone-200">
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-md">
-                      <span className="text-white font-black">{t.name.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <div className="font-black text-stone-900">{t.name}</div>
-                      <div className="text-sm text-stone-600 font-semibold">{t.role}</div>
-                    </div>
+                  <div>
+                    <div className="font-black text-stone-900 text-sm leading-tight">{t.name}</div>
+                    <div className="text-xs text-stone-500 font-semibold mt-0.5">{t.role}</div>
                   </div>
                 </div>
+                {/* Brand chip */}
+                <div className="text-[10px] font-black text-stone-900 px-2.5 py-1 bg-stone-100 rounded-full uppercase tracking-wider">
+                  {t.brand}
+                </div>
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
 
-        {/* Stats Strip */}
-        <div className="relative bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-10 lg:p-14 shadow-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:32px_32px]" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-white/20 via-transparent to-transparent blur-3xl" />
-          
-          <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">%98</div>
-              <div className="text-amber-50 font-bold text-sm lg:text-base">Memnuniyet</div>
+        {/* Mobile pagination hint */}
+        <div className="lg:hidden flex items-center justify-center gap-1.5 mt-4">
+          {testimonials.map((_, i) => (
+            <div key={i} className={`h-1 rounded-full transition-all ${i === 0 ? 'w-6 bg-stone-900' : 'w-1.5 bg-stone-300'}`} />
+          ))}
+        </div>
+
+        {/* Trust bar */}
+        <div className="mt-14 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-stone-200 rounded-2xl overflow-hidden border border-stone-200">
+          {[
+            { value: '%98', label: 'Memnuniyet' },
+            { value: '4.9/5', label: 'Ortalama puan' },
+            { value: '%40', label: 'Hız artışı' },
+            { value: '7/24', label: 'Türkçe destek' },
+          ].map((s, i) => (
+            <div key={i} className="bg-white p-6 lg:p-8 text-center">
+              <div className="text-3xl lg:text-4xl font-black text-stone-900 mb-1">{s.value}</div>
+              <div className="text-xs lg:text-sm text-stone-500 font-bold uppercase tracking-wider">{s.label}</div>
             </div>
-            <div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">4.9/5</div>
-              <div className="text-amber-50 font-bold text-sm lg:text-base">Ortalama Puan</div>
-            </div>
-            <div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">%40</div>
-              <div className="text-amber-50 font-bold text-sm lg:text-base">Hız Artışı</div>
-            </div>
-            <div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">7/24</div>
-              <div className="text-amber-50 font-bold text-sm lg:text-base">Destek</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

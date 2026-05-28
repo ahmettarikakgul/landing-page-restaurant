@@ -10,6 +10,7 @@ import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { MobileStickyBar } from './components/MobileStickyBar';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <FAQ />
       <CTA />
       <Footer />
+      <MobileStickyBar />
     </div>
   );
 }

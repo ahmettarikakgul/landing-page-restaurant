@@ -121,6 +121,15 @@ code {
     background-image: radial-gradient(var(--tw-gradient-stops));
   }
   
+  /* Hide scrollbar but allow scroll */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
@@ -141,11 +150,12 @@ code {
   /* Prevent layout shift */
   body {
     overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
   }
   
   /* Better focus states */
   *:focus-visible {
-    outline: 2px solid rgb(15 118 110);
+    outline: 2px solid rgb(217 119 6);
     outline-offset: 2px;
   }
 }

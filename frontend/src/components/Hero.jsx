@@ -1,198 +1,175 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { ArrowRight, Sparkles, TrendingUp, Users, CheckCircle2, Zap } from 'lucide-react';
+import { ArrowRight, Star, Play, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 
 export const Hero = () => {
   return (
-    <section className="relative pt-24 lg:pt-32 pb-20 lg:pb-32 overflow-hidden">
-      {/* Rich layered background */}
-      <div className="absolute inset-0">
-        {/* Base warm gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50/40 to-yellow-50/60" />
-        
-        {/* Atmospheric lighting */}
-        <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-gradient-radial from-amber-200/30 via-transparent to-transparent blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-radial from-orange-100/40 via-transparent to-transparent blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-yellow-100/20 via-transparent to-transparent blur-2xl" />
-        
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}} />
+    <section className="relative pt-20 lg:pt-28 pb-12 lg:pb-24 overflow-hidden">
+      {/* Layered warm background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-50/80 via-orange-50/40 to-white" />
+        <div className="absolute -top-32 right-0 w-[700px] h-[700px] bg-gradient-radial from-amber-200/40 via-amber-100/10 to-transparent blur-3xl" />
+        <div className="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-gradient-radial from-orange-200/30 via-transparent to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: 'radial-gradient(circle, #44403c 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            {/* Trust badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-3 bg-white/90 backdrop-blur-sm border-2 border-amber-200 rounded-2xl shadow-lg">
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 bg-amber-500 rounded-full animate-pulse" />
-                <Sparkles className="w-5 h-5 text-amber-600" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* LEFT: Copy */}
+          <div className="lg:col-span-6 space-y-6 lg:space-y-7">
+            {/* Trust pill with avatars */}
+            <div className="inline-flex items-center gap-3 pl-1.5 pr-4 py-1.5 bg-white border border-stone-200 rounded-full shadow-sm" data-testid="hero-trust-pill">
+              <div className="flex -space-x-2">
+                {['bg-amber-500', 'bg-orange-500', 'bg-red-500', 'bg-stone-700'].map((c, i) => (
+                  <div
+                    key={i}
+                    className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black text-white ${c}`}
+                  >
+                    {['M', 'A', 'C', 'E'][i]}
+                  </div>
+                ))}
               </div>
-              <span className="text-sm font-black text-stone-900">1.200+ Restoran Aktif Kullanıyor</span>
+              <div className="flex items-center gap-1.5">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                  ))}
+                </div>
+                <span className="text-xs font-black text-stone-900">4.9</span>
+                <span className="text-xs font-bold text-stone-500 hidden sm:inline">· 1.200+ restoran</span>
+              </div>
             </div>
 
-            {/* Main Heading */}
-            <div className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-stone-900 leading-[1.05] tracking-tight">
-                Restoranınızı
-                <span className="block mt-2 bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
-                  Dijital Güce
+            {/* Heading */}
+            <div className="space-y-4">
+              <h1 className="text-[40px] sm:text-5xl lg:text-[64px] xl:text-7xl font-black text-stone-900 leading-[1.02] tracking-[-0.02em]" data-testid="hero-heading">
+                Restoranınızın
+                <br />
+                <span className="relative inline-block">
+                  <span className="relative z-10 bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 bg-clip-text text-transparent">
+                    işletim sistemi
+                  </span>
+                  <span className="absolute -bottom-1 left-0 right-0 h-[10px] bg-amber-200/60 -z-0 rounded-sm" />
                 </span>
-                <span className="block mt-2">Dönüştürün</span>
               </h1>
-              <p className="text-xl lg:text-2xl text-stone-700 leading-relaxed font-semibold max-w-xl">
-                Sipariş yönetiminden mutfak operasyonlarına, <span className="text-amber-700">her şey tek platformda.</span> Türkiye'nin en güvenilir restoran teknolojisi.
+              <p className="text-lg lg:text-xl text-stone-600 leading-relaxed max-w-xl font-medium">
+                QR menüden mutfak ekranına, masa yönetiminden çoklu şubeye. Tüm restoran operasyonlarınız <span className="text-stone-900 font-bold">tek platformda</span>.
               </p>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-start gap-4">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Button
                 size="lg"
-                className="group w-full sm:w-auto bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white px-10 py-7 text-lg font-black shadow-2xl shadow-red-600/50 hover:shadow-red-700/60 transition-all duration-300 hover:scale-105 rounded-xl"
+                className="group h-14 px-7 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-[15px] font-black shadow-xl shadow-red-600/40 hover:shadow-2xl hover:shadow-red-600/50 transition-all duration-300 hover:-translate-y-0.5 rounded-xl"
+                data-testid="hero-primary-cta"
               >
-                <span className="flex items-center gap-3">
-                  Ücretsiz Başlayın
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <span className="flex items-center gap-2">
+                  Ücretsiz Hesap Aç
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" strokeWidth={3} />
                 </span>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-3 border-stone-900 hover:bg-stone-900 text-stone-900 hover:text-white px-10 py-7 text-lg font-black transition-all duration-200 rounded-xl"
+                className="group h-14 px-7 border-2 border-stone-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white text-stone-900 text-[15px] font-black bg-white transition-all duration-200 rounded-xl"
+                data-testid="hero-secondary-cta"
               >
-                Demo İsteyin
+                <Play className="w-4 h-4 mr-2 fill-current" />
+                2 dk Demo İzle
               </Button>
             </div>
 
-            {/* Trust signals */}
-            <div className="flex flex-wrap items-center gap-6 pt-6">
-              <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-green-700" />
-                </div>
-                <div>
-                  <div className="text-sm font-black text-stone-900">Kredi Kartı Yok</div>
-                  <div className="text-xs text-stone-600 font-semibold">14 gün ücretsiz</div>
-                </div>
+            {/* Trust strip */}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
+              <div className="flex items-center gap-2 text-stone-600">
+                <ShieldCheck className="w-5 h-5 text-amber-600" strokeWidth={2.5} />
+                <span className="text-sm font-bold">14 gün ücretsiz</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-amber-700" />
-                </div>
-                <div>
-                  <div className="text-sm font-black text-stone-900">5 Dakika Kurulum</div>
-                  <div className="text-xs text-stone-600 font-semibold">Hemen kullanın</div>
-                </div>
+              <div className="w-1 h-1 rounded-full bg-stone-300" />
+              <div className="flex items-center gap-2 text-stone-600">
+                <Zap className="w-5 h-5 text-amber-600" strokeWidth={2.5} />
+                <span className="text-sm font-bold">5 dk kurulum</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-stone-300" />
+              <div className="flex items-center gap-2 text-stone-600">
+                <TrendingUp className="w-5 h-5 text-amber-600" strokeWidth={2.5} />
+                <span className="text-sm font-bold">İptal serbest</span>
               </div>
             </div>
           </div>
 
-          {/* Right Visual - Device Mockup Placeholder */}
-          <div className="relative hidden lg:block">
-            {/* Floating device frame mockup */}
-            <div className="relative">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/30 via-orange-400/20 to-red-400/30 rounded-[2rem] blur-3xl scale-105" />
-              
-              {/* Main device container - iPad mockup */}
-              <div className="relative bg-stone-900 rounded-[2.5rem] shadow-2xl p-3 border-[6px] border-stone-800">
-                {/* Screen area placeholder */}
-                <div className="bg-gradient-to-br from-stone-100 to-stone-200 rounded-[1.75rem] aspect-[4/3] p-8 overflow-hidden relative">
-                  {/* Dashboard placeholder grid */}
-                  <div className="space-y-4">
-                    {/* Header bar */}
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
-                        <div className="w-32 h-3 bg-stone-300 rounded" />
-                        <div className="w-48 h-8 bg-stone-400 rounded" />
-                      </div>
-                      <div className="w-16 h-16 bg-amber-500/30 rounded-2xl" />
+          {/* RIGHT: Minimal premium product placeholder */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative max-w-[560px] mx-auto lg:max-w-none">
+              {/* Ambient warm glow */}
+              <div className="absolute -inset-12 bg-gradient-to-br from-amber-300/30 via-orange-300/20 to-red-300/20 rounded-[3rem] blur-3xl -z-10" />
+
+              {/* Main browser frame - MINIMAL PLACEHOLDER */}
+              <div className="relative bg-white rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.25)] border border-stone-200 overflow-hidden">
+                {/* Browser chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 bg-stone-50 border-b border-stone-200">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
+                  </div>
+                  <div className="flex-1 mx-3">
+                    <div className="bg-white rounded-md px-3 py-1 text-[10px] font-mono text-stone-400 border border-stone-200 inline-flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500" />
+                      app.restorax.com
                     </div>
-                    {/* Chart bars placeholder */}
-                    <div className="space-y-3 mt-6">
-                      <div className="flex items-center gap-3">
-                        <div className="flex-1 h-5 bg-amber-400/40 rounded-lg" style={{width: '100%'}} />
-                        <div className="w-12 h-4 bg-stone-300 rounded" />
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="flex-1 h-5 bg-amber-400/30 rounded-lg" style={{width: '75%'}} />
-                        <div className="w-12 h-4 bg-stone-300 rounded" />
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="flex-1 h-5 bg-amber-400/20 rounded-lg" style={{width: '60%'}} />
-                        <div className="w-12 h-4 bg-stone-300 rounded" />
-                      </div>
-                    </div>
-                    {/* Stats grid placeholder */}
-                    <div className="grid grid-cols-3 gap-4 mt-8">
-                      <div className="space-y-2">
-                        <div className="w-16 h-3 bg-stone-300 rounded" />
-                        <div className="w-20 h-6 bg-amber-500/30 rounded" />
-                      </div>
-                      <div className="space-y-2">
-                        <div className="w-16 h-3 bg-stone-300 rounded" />
-                        <div className="w-20 h-6 bg-amber-500/30 rounded" />
-                      </div>
-                      <div className="space-y-2">
-                        <div className="w-16 h-3 bg-stone-300 rounded" />
-                        <div className="w-20 h-6 bg-amber-500/30 rounded" />
-                      </div>
+                  </div>
+                </div>
+
+                {/* Minimal placeholder area - just soft gradient + light grid */}
+                <div className="relative bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-100 aspect-[4/3]">
+                  {/* subtle structural lines */}
+                  <div className="absolute inset-0 opacity-50" style={{
+                    backgroundImage: 'linear-gradient(to right, rgba(120,113,108,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,113,108,0.06) 1px, transparent 1px)',
+                    backgroundSize: '40px 40px'
+                  }} />
+                  {/* center diagonal soft light */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-amber-100/20" />
+                  {/* tiny corner hint label */}
+                  <div className="absolute top-4 left-4 text-[10px] font-black text-stone-400/70 uppercase tracking-[0.2em]">
+                    Dashboard
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating phone - MINIMAL */}
+              <div className="absolute -bottom-6 -left-4 sm:-left-12 w-[130px] sm:w-[160px] z-10 rotate-[-8deg] hover:rotate-[-4deg] transition-transform duration-500">
+                <div className="bg-stone-900 rounded-[2rem] p-1.5 shadow-2xl border-[3px] border-stone-800">
+                  <div className="relative bg-gradient-to-b from-amber-50 via-white to-stone-50 rounded-[1.6rem] aspect-[9/19] overflow-hidden">
+                    {/* notch */}
+                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-14 h-3.5 bg-stone-900 rounded-full z-10" />
+                    {/* Just a soft gradient placeholder, with a tiny brand mark */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-[9px] font-black text-stone-300 uppercase tracking-[0.25em] rotate-0">App</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating mobile mockup */}
-              <div className="absolute -bottom-8 -left-12 w-40 bg-stone-900 rounded-[2rem] shadow-2xl p-2 border-4 border-stone-800 transform rotate-[-6deg] hover:rotate-0 transition-transform duration-500">
-                <div className="bg-gradient-to-br from-stone-100 to-stone-200 rounded-[1.5rem] aspect-[9/16] p-4">
-                  <div className="space-y-3">
-                    <div className="w-full h-2 bg-stone-300 rounded-full" />
-                    <div className="w-3/4 h-4 bg-amber-400/30 rounded" />
-                    <div className="space-y-2 mt-4">
-                      <div className="w-full h-12 bg-stone-300 rounded-lg" />
-                      <div className="w-full h-12 bg-stone-300 rounded-lg" />
-                      <div className="w-full h-12 bg-stone-300 rounded-lg" />
+              {/* Floating live notification - REAL UX content, not fake UI */}
+              <div className="absolute -top-3 -right-3 sm:-right-6 bg-white rounded-2xl shadow-xl border border-stone-200 p-3 pr-4 max-w-[190px] z-10">
+                <div className="flex items-start gap-2.5">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-9 h-9 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center shadow">
+                      <TrendingUp className="w-5 h-5 text-white" strokeWidth={2.5} />
                     </div>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-black text-stone-500 uppercase tracking-wider">Canlı</div>
+                    <div className="text-sm font-black text-stone-900 leading-tight">+47 sipariş</div>
+                    <div className="text-[10px] text-stone-500 font-semibold">son 1 saatte</div>
                   </div>
                 </div>
-              </div>
-
-              {/* Floating stat card */}
-              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl border-2 border-amber-200 p-5 backdrop-blur-sm">
-                <div className="flex items-center gap-3">
-                  <TrendingUp className="w-8 h-8 text-green-600" />
-                  <div>
-                    <div className="text-xs font-bold text-stone-600">Canlı Sipariş</div>
-                    <div className="text-3xl font-black text-stone-900">+47</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats bar */}
-        <div className="mt-20 lg:mt-28">
-          <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-amber-100 p-10 lg:p-14">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/80 via-transparent to-orange-50/60 rounded-3xl" />
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-transparent bg-gradient-to-br from-amber-600 to-orange-600 bg-clip-text mb-2 lg:mb-3">1.200+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-stone-700 font-bold">Aktif Restoran</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-transparent bg-gradient-to-br from-amber-600 to-orange-600 bg-clip-text mb-2 lg:mb-3">50K+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-stone-700 font-bold">Günlük Sipariş</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-transparent bg-gradient-to-br from-amber-600 to-orange-600 bg-clip-text mb-2 lg:mb-3">3.500+</div>
-                <div className="text-xs sm:text-sm lg:text-base text-stone-700 font-bold">Şube Yönetimi</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-6xl font-black text-transparent bg-gradient-to-br from-amber-600 to-orange-600 bg-clip-text mb-2 lg:mb-3">%98</div>
-                <div className="text-xs sm:text-sm lg:text-base text-stone-700 font-bold">Memnuniyet</div>
               </div>
             </div>
           </div>

@@ -1,149 +1,109 @@
 import React from 'react';
-import { Monitor, Smartphone, Tablet, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Monitor, Smartphone, Tablet, ArrowRight } from 'lucide-react';
+
+const steps = [
+  { num: '01', title: 'QR ile menüye erişim', desc: 'Müşteri masadaki QR kodu okutarak menüye saniyeler içinde ulaşır.' },
+  { num: '02', title: 'Sipariş oluşturma', desc: 'Menüden seçim yapılır, sipariş doğrudan mutfak ekranına düşer.' },
+  { num: '03', title: 'Mutfak operasyonu', desc: 'Hazırlık başlar, garson bilgilendirilir, süre takip edilir.' },
+  { num: '04', title: 'Servis ve ödeme', desc: 'Sipariş servis edilir, ödeme masadan veya kasadan alınır.' },
+];
 
 export const Workflow = () => {
-  const steps = [
-    { num: '01', title: 'QR Kod Okutun', desc: 'Müşteri masadaki QR kodu okutur ve menüye saniyeler içinde ulaşır.' },
-    { num: '02', title: 'Sipariş Verin', desc: 'Menüden seçim yapılır ve sipariş doğrudan mutfağa düşer.' },
-    { num: '03', title: 'Mutfakta Hazırlanır', desc: 'Mutfak ekranı siparişi alır, hazırlık başlar, garson bilgilendirilir.' },
-    { num: '04', title: 'Servis & Ödeme', desc: 'Sipariş servis edilir, müşteri masadan ya da kasadan ödeme yapar.' },
-  ];
-
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden bg-white">
-      {/* Background */}
-      <div className="absolute inset-0">
+    <section id="workflow" className="relative py-20 lg:py-32 bg-stone-50 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gradient-radial from-amber-100/30 via-transparent to-transparent blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 border border-amber-300 rounded-full mb-6">
-            <div className="w-2 h-2 bg-amber-600 rounded-full" />
-            <span className="text-xs font-black text-amber-900 uppercase tracking-widest">Nasıl Çalışır</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 border border-amber-200 rounded-full mb-5">
+            <div className="w-1.5 h-1.5 bg-amber-600 rounded-full" />
+            <span className="text-[11px] font-black text-amber-900 uppercase tracking-[0.15em]">Nasıl Çalışır</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 mb-6 leading-[1.05] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-stone-900 leading-[1.05] tracking-tight mb-5">
             4 adımda
             <span className="block text-amber-600">tam dijital dönüşüm</span>
           </h2>
-          <p className="text-lg lg:text-xl text-stone-600 leading-relaxed font-medium">
+          <p className="text-base lg:text-lg text-stone-600 leading-relaxed max-w-2xl">
             QR kod okutmaktan ödeme almaya kadar tüm operasyon RestoraX üzerinden akıcı şekilde işler.
           </p>
         </div>
 
-        {/* Browser mockup with steps */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Steps */}
-          <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* LEFT: Steps */}
+          <div className="lg:col-span-5 space-y-3 lg:space-y-4 order-2 lg:order-1">
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="group flex gap-5 p-6 bg-white border-2 border-stone-200 hover:border-amber-400 rounded-2xl hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative flex gap-4 p-5 lg:p-6 bg-white border border-stone-200 hover:border-amber-400 rounded-2xl hover:shadow-lg transition-all duration-300 cursor-pointer"
+                data-testid={`workflow-step-${idx + 1}`}
               >
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
-                    {step.num}
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-stone-100 group-hover:bg-gradient-to-br group-hover:from-amber-400 group-hover:to-orange-500 flex items-center justify-center transition-all duration-300">
+                    <span className="text-stone-900 group-hover:text-white font-black text-base lg:text-lg transition-colors">{step.num}</span>
                   </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-black text-stone-900 mb-2">{step.title}</h3>
-                  <p className="text-stone-600 leading-relaxed">{step.desc}</p>
+                <div className="flex-1 pt-1">
+                  <h3 className="text-lg lg:text-xl font-black text-stone-900 mb-1.5 leading-tight">{step.title}</h3>
+                  <p className="text-sm lg:text-base text-stone-600 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Browser mockup */}
-          <div className="relative order-1 lg:order-2">
+          {/* RIGHT: Minimal device showcase */}
+          <div className="lg:col-span-7 lg:sticky lg:top-28 order-1 lg:order-2">
             <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 via-orange-400/15 to-red-400/20 rounded-3xl blur-3xl scale-105" />
-              
-              {/* Browser frame */}
-              <div className="relative bg-stone-900 rounded-2xl shadow-2xl overflow-hidden border border-stone-700">
-                {/* Browser top bar */}
-                <div className="bg-stone-800 px-4 py-3 flex items-center gap-2 border-b border-stone-700">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full" />
-                    <div className="w-3 h-3 bg-amber-500 rounded-full" />
-                    <div className="w-3 h-3 bg-green-500 rounded-full" />
+              {/* Soft ambient glow */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-amber-300/20 via-orange-300/10 to-red-300/15 rounded-[3rem] blur-3xl -z-10" />
+
+              {/* Browser frame - minimal */}
+              <div className="relative bg-white rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.18)] border border-stone-200 overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-3 bg-stone-50 border-b border-stone-200">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-stone-300" />
                   </div>
-                  <div className="flex-1 mx-4">
-                    <div className="bg-stone-700 rounded-md px-3 py-1.5 text-xs text-stone-400 font-mono">
+                  <div className="flex-1 mx-3">
+                    <div className="bg-white rounded-md px-3 py-1 text-[10px] font-mono text-stone-400 border border-stone-200 inline-flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500" />
                       app.restorax.com/dashboard
                     </div>
                   </div>
                 </div>
-                
-                {/* Dashboard content placeholder */}
-                <div className="bg-stone-100 aspect-[16/10] p-6">
-                  {/* Sidebar */}
-                  <div className="grid grid-cols-12 gap-4 h-full">
-                    <div className="col-span-3 bg-white rounded-xl p-3 shadow-sm">
-                      <div className="space-y-2">
-                        <div className="w-full h-7 bg-amber-500 rounded-lg" />
-                        <div className="w-full h-7 bg-stone-200 rounded-lg" />
-                        <div className="w-full h-7 bg-stone-200 rounded-lg" />
-                        <div className="w-full h-7 bg-stone-200 rounded-lg" />
-                        <div className="w-full h-7 bg-stone-200 rounded-lg" />
-                        <div className="w-full h-7 bg-stone-200 rounded-lg" />
-                      </div>
-                    </div>
-                    {/* Main content */}
-                    <div className="col-span-9 space-y-3">
-                      {/* Top stats */}
-                      <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-white rounded-xl p-3 shadow-sm">
-                          <div className="w-12 h-2 bg-stone-300 rounded mb-2" />
-                          <div className="w-16 h-5 bg-amber-500 rounded" />
-                        </div>
-                        <div className="bg-white rounded-xl p-3 shadow-sm">
-                          <div className="w-12 h-2 bg-stone-300 rounded mb-2" />
-                          <div className="w-16 h-5 bg-orange-500 rounded" />
-                        </div>
-                        <div className="bg-white rounded-xl p-3 shadow-sm">
-                          <div className="w-12 h-2 bg-stone-300 rounded mb-2" />
-                          <div className="w-16 h-5 bg-red-500 rounded" />
-                        </div>
-                      </div>
-                      {/* Chart area */}
-                      <div className="bg-white rounded-xl p-4 shadow-sm flex-1 h-full">
-                        <div className="flex justify-between items-end h-full gap-2">
-                          {[60, 80, 45, 90, 70, 85, 95, 50, 75, 65].map((h, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 bg-gradient-to-t from-amber-500 to-orange-400 rounded-t"
-                              style={{ height: `${h}%` }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+
+                {/* Minimal placeholder */}
+                <div className="relative bg-gradient-to-br from-stone-50 via-amber-50/30 to-stone-100 aspect-[16/10]">
+                  <div className="absolute inset-0 opacity-50" style={{
+                    backgroundImage: 'linear-gradient(to right, rgba(120,113,108,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,113,108,0.06) 1px, transparent 1px)',
+                    backgroundSize: '48px 48px'
+                  }} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-amber-100/20" />
+                  <div className="absolute top-5 left-5 text-[10px] font-black text-stone-400/70 uppercase tracking-[0.2em]">
+                    Yönetim Paneli
                   </div>
                 </div>
               </div>
 
-              {/* Floating device icons */}
-              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl border-2 border-amber-200 p-4 flex gap-3">
-                <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                  <Monitor className="w-5 h-5 text-amber-700" />
-                </div>
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <Tablet className="w-5 h-5 text-orange-700" />
-                </div>
-                <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-red-700" />
-                </div>
+              {/* Devices floating chip */}
+              <div className="absolute -top-5 -right-5 bg-white rounded-2xl shadow-xl border border-stone-200 px-4 py-3 flex items-center gap-2.5">
+                <Monitor className="w-4 h-4 text-stone-700" strokeWidth={2.5} />
+                <Tablet className="w-4 h-4 text-stone-700" strokeWidth={2.5} />
+                <Smartphone className="w-4 h-4 text-stone-700" strokeWidth={2.5} />
+                <div className="h-4 w-px bg-stone-200" />
+                <span className="text-xs font-black text-stone-900">Tüm cihazlar</span>
               </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl border-2 border-stone-200 p-4 max-w-[180px]">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-xs font-black text-stone-900">CANLI</span>
+              {/* Sync indicator chip */}
+              <div className="absolute -bottom-5 left-5 lg:-left-5 bg-stone-900 rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2.5">
+                <div className="relative">
+                  <div className="w-2 h-2 bg-green-400 rounded-full" />
+                  <div className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full animate-ping" />
                 </div>
-                <p className="text-xs text-stone-600 font-semibold">Tüm cihazlardan eş zamanlı erişim</p>
+                <span className="text-xs font-black text-white">Eş zamanlı senkronizasyon</span>
               </div>
             </div>
           </div>
