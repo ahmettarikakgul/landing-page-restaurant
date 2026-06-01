@@ -4,7 +4,7 @@ This document defines the data structures and future API integration plan for th
 
 The current implementation is frontend-driven with structured data models designed to support future backend integration.
 
----
+--- 
 
 ## 📊 Data Layer Overview
 
