@@ -1,6 +1,6 @@
-# RestoraX Landing Page - API Contracts & Integration Plan
+# Restaurant SaaS Platform - Frontend Data Contracts & API Specification
 
-## Current Implementation Status
+## Current State
 **Frontend-Only with Mock Data** ✓
 - All components built and functional
 - Mock data in `/app/frontend/src/mock.js`
