@@ -2,6 +2,7 @@ name: CI
 
 on:
   push:
+    branches: [ main ]
   pull_request:
 
 jobs:
@@ -9,15 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
+      # FRONTEND BUILD
+      - name: Install frontend deps
+        working-directory: frontend
         run: npm install
 
-      - name: Run build check
+      - name: Build frontend
+        working-directory: frontend
         run: npm run build
+
+      # BACKEND CHECK (optional)
+      - name: Install backend deps
+        working-directory: backend
+        run: pip install -r requirements.txt || true
