@@ -17,18 +17,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
 
-      # FRONTEND INSTALL + BUILD
+      # FRONTEND INSTALL
       - name: Install frontend dependencies
         working-directory: ./frontend
-        run: npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps --force
 
+      # FRONTEND BUILD
       - name: Build frontend
         working-directory: ./frontend
         run: npm run build
 
-      # BACKEND INSTALL (Python varsa)
-      - name: Setup Python (backend)
+      # BACKEND (optional safe)
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -38,7 +41,7 @@ jobs:
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run backend sanity check
+      - name: Backend health check
         working-directory: ./backend
         run: |
           if [ -f server.py ]; then python server.py --help || true; fi
