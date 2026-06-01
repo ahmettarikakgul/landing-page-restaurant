@@ -85,6 +85,30 @@ It is currently in an **early production stage**, with ongoing improvements towa
 
 ---
 
+## 🏗️ Architecture Notes
+
+The system is designed with a multi-tenant SaaS mindset:
+
+### Multi-Tenant Model
+Each restaurant operates as an isolated tenant with scoped data access.
+
+### Authentication Flow (Planned)
+- Role-based access control (RBAC)
+- Admin / Staff / Sub-user hierarchy
+- Session scoped per tenant
+
+### Data Isolation Strategy
+- Tenant ID based request filtering
+- Backend middleware enforcement layer
+- Future database-level separation support
+
+### Security Model
+- API boundary validation per tenant
+- Prevention of cross-tenant data leakage
+- Structured for POS-level transactional safety
+
+---
+
 ## 👨‍💻 Author
 
 Ahmet Tarık Akgül  
