@@ -16,18 +16,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      # FRONTEND BUILD
-      - name: Install frontend deps
+      # FRONTEND
+      - name: Install frontend dependencies
         working-directory: frontend
         run: npm install
 
       - name: Build frontend
         working-directory: frontend
         run: npm run build
-
-      # BACKEND CHECK (optional)
-      - name: Install backend deps
-        working-directory: backend
-        run: pip install -r requirements.txt || true
