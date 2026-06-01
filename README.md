@@ -79,7 +79,7 @@ Frontend and backend technologies used in this project:
 
 ## 📌 Project Status
 
-This project started as an AI-assisted scaffold and has been progressively refined into a structured application foundation.
+This project originally scaffolded with AI assistance and refined into a structured system.
 
 It is currently in an **early production stage**, with ongoing improvements toward a scalable SaaS architecture.
 
